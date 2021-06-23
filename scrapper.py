@@ -1,13 +1,8 @@
-import pickle
-from sys import path_importer_cache
-import time
 from bs4 import BeautifulSoup
 import requests
 from consts import *
 import re
 import json
-import pprint
-
 
 def cal_per(pre, abs):
     percetage = round((pre/(pre+abs))*100)
