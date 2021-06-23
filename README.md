@@ -3,10 +3,6 @@
 
 An api built using fastapi to get student info from [RIT](http://parents.msrit.edu)website
 
-
-
-## Badges
-
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fanishgowda21%2FRIT-sis-scraper&count_bg=%23C428CF&title_bg=%23555555&icon=visualstudiocode.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com) [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 ## Run Locally
@@ -39,11 +35,9 @@ Start the server
 ## Deployment
 
 ### If you wish to deploy this project in heroku just click the button below 
-# Button here
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anishgowda21/RIT-sis-scraper/tree/master)
 
 
-
-  
 ## API Reference
 
 #### Get result
@@ -68,4 +62,4 @@ Start the server
 Any suggestions for this project is welcome
 - Just fork the repo make your changes and send a PR
 
-### If you like this repo give a :star
+### If you like this project show some :heart: and give this repo a :star:
