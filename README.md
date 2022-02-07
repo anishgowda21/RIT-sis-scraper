@@ -58,8 +58,10 @@ Start the server
 ## Example api call from local machine
 
 ### `http://127.0.0.1:8000/sis/?usn=1ms19cd540&dob=2001-07-21`
-  
 
+## For a first year student
+
+### `http://127.0.0.1:8000/sis/?usn=1ms19cd540&dob=2001-07-21&firstyear=true`
 ## 
 ## Contributing
 
