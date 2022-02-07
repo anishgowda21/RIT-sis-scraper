@@ -62,7 +62,12 @@ Start the server
 ## For a first year student
 
 ### `http://127.0.0.1:8000/sis/?usn=1ms19cd540&dob=2001-07-21&firstyear=true`
-## 
+
+## Or you can see a demo at https://ritsis.herokuapp.com/
+### Example call
+### `https://ritsis.herokuapp.com/sis/?usn=1ms19cd540&dob=2001-07-21&firstyear=true`
+
+## As mentioned before the firstyear parameter is optional and only applicable for first year students
 ## Contributing
 
 Any suggestions for this project is welcome
