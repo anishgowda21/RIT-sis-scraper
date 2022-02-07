@@ -1,13 +1,14 @@
-import json
 from typing import Optional
 from fastapi import FastAPI
+from starlette.responses import RedirectResponse
 from SIS import get_sis_data
 app = FastAPI()
 
 
 @app.get("/")
 def root():
-    return {"Hello": "word"}
+    response = RedirectResponse(url="https://anishgowda21.github.io/RIT-sis-scraper/")
+    return response
 
 
 @app.get("/sis/")
