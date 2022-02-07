@@ -1,7 +1,7 @@
 import json
 from typing import Optional
 from fastapi import FastAPI
-from scrapper import get_data
+from SIS import get_sis_data
 app = FastAPI()
 
 
@@ -11,5 +11,7 @@ def root():
 
 
 @app.get("/sis/")
-def get_item(usn: str, dob: str):
-    return (get_data(usn, dob))
+def get_item(usn: str, dob: str, firstyear: Optional[bool] = None):
+    if firstyear:
+        return get_sis_data(usn, dob, firstyear)
+    return get_sis_data(usn, dob)

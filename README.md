@@ -40,16 +40,20 @@ Start the server
 
 ## API Reference
 
-#### Get result
+#### Get sis data
 
 ```http
   GET /sis/?usn={usn}&dob={dob}
 ```
-
+### Note if you are a first year please add parameter `firstyear=true`
+```http
+  GET /sis/?usn={usn}&dob={dob}&firstyear=true
+```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `usn` | `string` | **Required**. your usn  |
 | `dob` | `string` | **Required**. your dob in yyyy-mm-dd form  |
+| `firstyear` | `bool` | **optional**. If you are a first year add this|
 
 ## Example api call from local machine
 
@@ -62,4 +66,5 @@ Start the server
 Any suggestions for this project is welcome
 - Just fork the repo make your changes and send a PR
 
-### If you like this project show some :heart: and give this repo a :star:
+### If you like this [project](https://github.com/anishgowda21/RIT-sis-scraper) show some :heart: and give this repo a :star:
+## Thank You
