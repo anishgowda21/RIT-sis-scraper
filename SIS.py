@@ -7,8 +7,11 @@ import traceback
 
 # Function to calculate percentage of attendance
 def cal_per(pre, absent) -> str:
-    percentage = round((pre / (pre + absent)) * 100)
-    return str(percentage) + "%"
+    try:
+        percentage = round((pre / (pre + absent)) * 100)
+        return str(percentage) + "%"
+    except ZeroDivisionError:
+        return "0%"
 
 
 # Function to scrape the attendance data and return a dictionary
@@ -50,7 +53,8 @@ def get_attendance_data(s, url) -> dict:
             entry = row.find_all('td')
             dayObj['slNo'] = entry[0].get_text().strip()
             dayObj['date'] = entry[1].get_text().strip()
-            dayObj["time"] = re.sub("[\n\r\s]+", " ", entry[2].get_text()).strip()
+            dayObj["time"] = re.sub(
+                "[\n\r\s]+", " ", entry[2].get_text()).strip()
             attendanceDict["presentClasses"].append(dayObj)
     except (AttributeError, IndexError):
         pass
@@ -63,7 +67,8 @@ def get_attendance_data(s, url) -> dict:
             entry = row.find_all('td')
             dayObj['slNo'] = entry[0].get_text().strip()
             dayObj['date'] = entry[1].get_text().strip()
-            dayObj["time"] = re.sub("[\n\r\s]+", " ", entry[2].get_text()).strip()
+            dayObj["time"] = re.sub(
+                "[\n\r\s]+", " ", entry[2].get_text()).strip()
             attendanceDict["absentClasses"].append(dayObj)
     except (AttributeError, IndexError):
         pass
@@ -118,13 +123,17 @@ def setBasicvalues(url, data):
 
     try:
         finalDict["name"] = vals[0].find_all("td")[0].get_text().split(": ")[1]
-        finalDict["semester"] = vals[0].find_all("td")[2].get_text().split(": ")[1]
+        finalDict["semester"] = vals[0].find_all(
+            "td")[2].get_text().split(": ")[1]
         finalDict["usn"] = vals[1].find_all("td")[0].get_text().split(": ")[1]
-        finalDict["course"] = vals[2].find_all("td")[0].get_text().split(": ")[1]
-        finalDict["batch"] = vals[3].find_all("td")[0].get_text().split(": ")[1]
+        finalDict["course"] = vals[2].find_all(
+            "td")[0].get_text().split(": ")[1]
+        finalDict["batch"] = vals[3].find_all(
+            "td")[0].get_text().split(": ")[1]
         finalDict["last_updated"] = data.find(
             "p", {"class": "uk-text-right cn-last-update"}).get_text().split(": ")[1]
-        finalDict["image_url"] = url + data.find("img", {"class": "uk-preserve-width uk-border"})["src"]
+        finalDict["image_url"] = url + \
+            data.find("img", {"class": "uk-preserve-width uk-border"})["src"]
         return finalDict
 
     except AttributeError:
@@ -142,7 +151,8 @@ def get_sis_data(usn, dob, isfirstyear=False) -> dict:
     try:
         # Create a session
         s = requests.Session()
-        response = s.post(loginUrl, data=payload)  # Make a post request within the session
+        # Make a post request within the session
+        response = s.post(loginUrl, data=payload)
         data = BeautifulSoup(response.text, "html.parser")
 
         # Set some basic values like name and dob available in dashboard
@@ -169,7 +179,8 @@ def get_sis_data(usn, dob, isfirstyear=False) -> dict:
             subDict['name'] = course_name
             subDict['code'] = course_code
             print(f"Scraping {course_name}")
-            subDict['attendance'] = get_attendance_data(s, loginUrl + attendance_url)
+            subDict['attendance'] = get_attendance_data(
+                s, loginUrl + attendance_url)
             subDict['cie'] = get_cie_data(s, loginUrl + cie_url)
             studentData['courses'].append(subDict)
         s.post(loginUrl, loginData.logoutPayload)
